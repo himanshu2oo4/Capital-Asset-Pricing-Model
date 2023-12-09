@@ -109,76 +109,32 @@ def app():
             st.dataframe(return_df, use_container_width=True)
        
         random_colors = ['#%06x' % random.randint(0, 0xFFFFFF) for _ in range(len(return_df))]
+
+        with st.container():
+            st.write("----")
+            st.markdown('### Daily return of these stocks')
+
+            st.plotly_chart(CAPM_Functions.interactive_plot(stocks_daily_return) , use_container_width=True)
+
+
         fig = px.bar(return_df, x='Stock', y='Return Value', title='Expected return for Stocks',color_discrete_sequence=random_colors)
         fig.update_traces(texttemplate='%{y}%', textposition='inside')
         st.plotly_chart(fig , use_container_width=True)
         
     # further new addons : -------
         
-    #     if st.button("Wanna buy some stock > ? " ):
-    #         st.text('Different webistes from which you can buy stocks for you.. 💹💸')
-    # # Redirect using HTML
-    #         st.markdown(
-    #             """
-    #             <style>
-    #                 .centered {
-    #                 display: flex;
-    #                 flex-direction: column;
-    #                 align-items: center;
-    #                 justify-content: center;
-    #                 height: 100vh;  /* 100% of the viewport height */
-    #             }
-    #                 a {
-    #                     text-decoration: none;
-    #                     color: inherit;
-    #                 }
-    #             </style>
-    #             <a href="https://groww.in/" class = 'centered' target="_blank">On Grow</a>
-    #             <a href="https://upstox.com/" class = 'centered' target="_blank">On Upstox</a>
-    #             <a href="" target="_blank" class = 'centered'>On Upstox</a>
-    #             <a href="https://www.5paisa.com/" class = 'centered' target="_blank">On 5Paisa</a>
-    #             <a href="https://zerodha.com/" class = 'centered' target="_blank">On Zerodha</a>          
-    #             """,
-    #             unsafe_allow_html=True
-    #         )
-        
-        st.markdown(
-                """
-                <style>
-                    .centered {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100vh;  /* 100% of the viewport height */
-                    }
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
+        if st.button("Wanna buy any of these stocks? " ):
 
-# Centered container for the button and messages
-        with st.container() as centered_container:
-                if st.button("Wanna buy some stock?"):
-                    st.text('Different websites from which you can buy stocks for you.. 💹💸')
+            st.text('Different webistes from which you can buy stocks for you.. 💹💸')
+            st.markdown('''
+                <a href="https://groww.in/" class = 'centered' target="_blank">On Grow</a> <br>
+                <a href="https://upstox.com/" class = 'centered' target="_blank">On Upstox</a> <br>
+                <a href="https://www.5paisa.com/" class = 'centered' target="_blank">On 5Paisa</a> <br>
+                <a href="https://zerodha.com/" class = 'centered' target="_blank">On Zerodha</a>  <br>
+            ''', unsafe_allow_html= True)
+            
 
-                    # Redirect using HTML
-                    st.markdown(
-                        """
-                        <a href="https://groww.in/" class='centered' target="_blank">On Grow</a>
-                        <a href="https://upstox.com/" class='centered' target="_blank">On Upstox</a>
-                        <a href="" class='centered' target="_blank">On Some Website</a>
-                        <a href="https://www.5paisa.com/" class='centered' target="_blank">On 5Paisa</a>
-                        <a href="https://zerodha.com/" class='centered' target="_blank">On Zerodha</a>
-                        """,
-                        unsafe_allow_html=True
-                    )
-
-            # Set the container to be centered
-        centered_container.set_styled()
     
-
-
 
 
 
@@ -188,3 +144,5 @@ def app():
 
     except:
         st.error("Error Occurred! Please try again.")
+
+    
