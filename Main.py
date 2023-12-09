@@ -26,13 +26,14 @@ st.set_page_config(
 #     """,
 #     unsafe_allow_html=True
 # )
-
-
+# -----------------------------------------------------
+# removing the hamburgers and made with streamlit text from the page 
 st.markdown(
     """
     <style>
         #MainMenu {visibility: hidden;}
         .st-emotion-cache-1wbqy5l.e17vllj40 {visibility : hidden;}
+        .st-emotion-cache-164nlkn.ea3mdgi1 {visibility : hidden;}
     </style>
     """,
     unsafe_allow_html=True
@@ -75,9 +76,9 @@ marquee_html = """
 
         @keyframes marquee {
             0%   { transform: translate(100%, 0); }
-            25%  { transform: translate(50%, 0); }
-            50%  { transform: translate(0, 0); }
-            75%  { transform: translate(-50%, 0); }
+            # 25%  { transform: translate(50%, 0); }
+            # 50%  { transform: translate(0, 0); }
+            # 75%  { transform: translate(-50%, 0); }
             100% { transform: translate(-100%, 0); }
             /* Add easing for a smoother animation */
             animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
@@ -85,7 +86,7 @@ marquee_html = """
         }
     </style>
     <div class="marquee">
-        <h2>A Stock Analysis Project By Kanika & Himanshu </h2>
+        <h2>A Capital Asset Pricing Model on Stock By Kanika & Himanshu </h2>
     </div>
 """
 
