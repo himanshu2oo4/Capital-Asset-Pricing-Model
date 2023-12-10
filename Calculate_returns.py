@@ -9,6 +9,7 @@ import yfinance as yf
 import plotly.express as px 
 import CAPM_Functions
 import random
+import webbrowser
 
 def app():
     st.title("Calculate Risk  and Return")
@@ -123,24 +124,30 @@ def app():
         
     # further new addons : -------
         
-        if st.button("Wanna buy any of these stocks? " ):
+        st.text('Wanna buy any of these stocks 💹💸 ? ')
 
-            st.text('Different webistes from which you can buy stocks for you.. 💹💸')
-            st.markdown('''
+        st.text('Different webistes from which you can buy stocks for you.. ')
+        st.markdown('''
                 <a href="https://groww.in/" class = 'centered' target="_blank">On Grow</a> <br>
                 <a href="https://upstox.com/" class = 'centered' target="_blank">On Upstox</a> <br>
                 <a href="https://www.5paisa.com/" class = 'centered' target="_blank">On 5Paisa</a> <br>
                 <a href="https://zerodha.com/" class = 'centered' target="_blank">On Zerodha</a>  <br>
             ''', unsafe_allow_html= True)
-            
-
-    
 
 
+# making all  these links in the form of a button but getting error printing the link not opening the webpage after clicking on them !---------
 
+#         buy_links = [
+#     {"name": "On Grow", "url": "https://groww.in/"},
+#     {"name": "On Upstox", "url": "https://upstox.com/"},
+#     {"name": "On 5Paisa", "url": "https://www.5paisa.com/"},
+#     {"name": "On Zerodha", "url": "https://zerodha.com/"}
+#     ]
 
-
-
+# # Display buttons for each link
+#         for link in buy_links:
+#             if st.button(link["name"]):
+#                 st.markdown(f'<a href="{link["url"]}" target="_blank">{link["name"]}</a>', unsafe_allow_html=True)
 
     except:
         st.error("Error Occurred! Please try again.")
