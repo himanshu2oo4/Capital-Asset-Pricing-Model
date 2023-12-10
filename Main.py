@@ -41,7 +41,7 @@ st.markdown(
 css = """
     <style>
         body {
-            background-color: #EA7056;
+            background-color: #006375;
             font-family: 'Arial', sans-serif;
             background-image: url('stocks2.jfif');
             background-size: cover;
@@ -64,33 +64,33 @@ css = """
     </style>
 """
 st.markdown(css, unsafe_allow_html=True)
-marquee_html = """
-    <style>
-        .marquee {
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            box-sizing: border-box;
-            animation: marquee 7s ease-in-out 1s infinite alternate forwards;
-        }
+# marquee_html = """
+#     <style>
+#         .marquee {
+#             width: 100%;
+#             white-space: nowrap;
+#             overflow: hidden;
+#             box-sizing: border-box;
+#             animation: marquee 7s ease-in-out 1s infinite alternate forwards;
+#         }
 
-        @keyframes marquee {
-            0%   { transform: translate(100%, 0); }
-            # 25%  { transform: translate(50%, 0); }
-            # 50%  { transform: translate(0, 0); }
-            # 75%  { transform: translate(-50%, 0); }
-            100% { transform: translate(-100%, 0); }
-            /* Add easing for a smoother animation */
-            animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+#         @keyframes marquee {
+#             0%   { transform: translate(100%, 0); }
+#             # 25%  { transform: translate(50%, 0); }
+#             # 50%  { transform: translate(0, 0); }
+#             # 75%  { transform: translate(-50%, 0); }
+#             100% { transform: translate(-100%, 0); }
+#             /* Add easing for a smoother animation */
+#             animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
 
-        }
-    </style>
-    <div class="marquee">
-        <h2>A Capital Asset Pricing Model on Stock By Kanika & Himanshu </h2>
-    </div>
-"""
+#         }
+#     </style>
+#     <div class="marquee">
+#         <h2>A Capital Asset Pricing Model on Stock By Kanika & Himanshu </h2>
+#     </div>
+# """
 
-st.markdown(marquee_html , unsafe_allow_html = True)
+# st.markdown(marquee_html , unsafe_allow_html = True)
 
 
 class MultiApp:
@@ -104,16 +104,17 @@ class MultiApp:
         })
     
 
-    def run(self):
+    def run():
+        st.title("Capital Asset Pricing Model (CAPM) 📈")
         app = option_menu(
             menu_title="",
-            options=["About","Importance","Return_Analysis","Calculate_Return"],
+            options=["Home Page","Importance","Return_Analysis","Calculate_Return"],
             icons=["house-fill","book-fill","stack-overflow","building-up"],
             default_index=0,
             orientation="horizontal"
             )
 
-        if app=="About":
+        if app=="Home Page":
             Home_Page.app()
             
         if app=="Importance":
@@ -123,19 +124,6 @@ class MultiApp:
         if app=="Calculate_Return":
             Calculate_returns.app()
 
-    
-if __name__ == '__main__':
-    app = MultiApp()
-    def main_page():
-        st.title("CAPM Web Application - Home Page")
-        st.write("Welcome to the Home Page!")
+    run()
 
-        # Add a button to navigate to the new page
-        if st.button("Go to New Page"):
-            # Use st.experimental_set_query_params to modify the URL
-            st.experimental_set_query_params(nav="Home_Page.py")
-
-    # Add the main page as the first app
-    app.add_app("Home", main_page)
-    app.run()
 

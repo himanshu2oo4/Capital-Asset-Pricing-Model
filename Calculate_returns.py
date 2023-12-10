@@ -9,10 +9,11 @@ import yfinance as yf
 import plotly.express as px 
 import CAPM_Functions
 import random
+import seaborn as sns 
 import webbrowser
 
 def app():
-    st.title("Calculate Risk  and Return")
+    st.header("Calculate Risk  and Return")
 
     st.write("Assuming the Benchmark used in Market Returns:")
     st.markdown("- if beta = 0 this means the stock is uncorrelated to the market")
@@ -111,43 +112,138 @@ def app():
        
         random_colors = ['#%06x' % random.randint(0, 0xFFFFFF) for _ in range(len(return_df))]
 
+
         with st.container():
             st.write("----")
-            st.markdown('### Daily return of these stocks')
+            st.markdown('### Expected Increase in price')
+            fig = px.bar(return_df, x='Stock', y='Return Value',color_discrete_sequence=random_colors)
+            fig.update_traces(texttemplate='%{y:.2f}', textposition='inside')
+            st.plotly_chart(fig , use_container_width=True)
+            
 
-            st.plotly_chart(CAPM_Functions.interactive_plot(stocks_daily_return) , use_container_width=True)
 
 
-        fig = px.bar(return_df, x='Stock', y='Return Value', title='Expected return for Stocks',color_discrete_sequence=random_colors)
-        fig.update_traces(texttemplate='%{y}%', textposition='inside')
-        st.plotly_chart(fig , use_container_width=True)
+
+        
         
     # further new addons : -------
+
+        def get_risk_free_rate():
+        # Use the yield on a 1-year Treasury bill as a proxy for the risk-free rate
+            rsSymbol = "^IRX"
+            risk_free_data = yf.download(rsSymbol, start=start, end=end)
+            risk_free_rate = risk_free_data['Close'].iloc[-1] / 100  # Convert percentage to decimal
+            return risk_free_rate
+        def calculate_expected_return(stock_data, risk_free_rate, market_return):
+            expected_returns = []
+
+            for stock_symbol in stock_data.columns:
+                    stock_returns = stock_data[stock_symbol].pct_change().dropna()
+                    import statsmodels.api as sm
+                    # Calculate beta using linear regression
+                    market_returns = yf.download("^GSPC", start=start, end=end)['Adj Close'].pct_change().dropna()
+                    X = sm.add_constant(market_returns)
+                    model = sm.OLS(stock_returns, X).fit()
+                    beta = model.params['Adj Close']
+                    print(beta)
+                    # Calculate expected return using CAPM
+                    expected_return = risk_free_rate + beta * (market_return - risk_free_rate)
+                    expected_returns.append((stock_symbol, expected_return))
+
+            return expected_returns
+        # Download ADJ Close data of stocks 
+        stocks_data = pd.DataFrame()
+        for stock_symbol in stocks_list:
+            data = yf.download(stock_symbol, start=start, end=end)
+            stocks_data[f'{stock_symbol}'] = data['Adj Close']
+
+        # Calculate expected return using CAPM
+        risk_free_rate = get_risk_free_rate()
+        market_return = yf.download("^GSPC", start=start, end=end)['Adj Close'].pct_change().mean()
+        expected_returns = calculate_expected_return(stocks_data , risk_free_rate, market_return)
+
+
+        expected_returns_df = pd.DataFrame(expected_returns, columns=['Stock', 'Expected Return'])
+        RandomColors = ['#%06x' % random.randint(0, 0xFFFFFF) for _ in range(len(expected_returns_df))]
+        # st.dataframe(expected_returns_df)
+        st.markdown('### Overall Expected Return (%) wrt Market return value')
+        fig = px.bar(expected_returns_df, x='Stock', y='Expected Return',color_discrete_sequence=RandomColors)
+        fig.update_traces(texttemplate='%{y:.2f}%', textposition='inside')
+        st.plotly_chart(fig , use_container_width=True)
         
-        st.text('Wanna buy any of these stocks 💹💸 ? ')
 
-        st.text('Different webistes from which you can buy stocks for you.. ')
+
+
+
+        
+
+
+        # st.markdown('''
+        # <a href="https://groww.in/" target="_blank">
+        # <button type="button">On grow</button>
+        # </a> 
+        # <a href="https://upstox.com/" target="_blank">
+        # <button type="button">On upstox</button>
+        # </a>   
+        # <a href="https://5paisa.com/" target="_blank">
+        # <button type="button">On 5paisa</button>
+        # </a>   
+        # <a href="https://Zerodha.com/" target="_blank">
+        # <button type="button">On Zerodha</button>
+        # </a>     
+
+
+        # ''' , unsafe_allow_html = True)
+
+        # new -----------
         st.markdown('''
-                <a href="https://groww.in/" class = 'centered' target="_blank">On Grow</a> <br>
-                <a href="https://upstox.com/" class = 'centered' target="_blank">On Upstox</a> <br>
-                <a href="https://www.5paisa.com/" class = 'centered' target="_blank">On 5Paisa</a> <br>
-                <a href="https://zerodha.com/" class = 'centered' target="_blank">On Zerodha</a>  <br>
-            ''', unsafe_allow_html= True)
+    <div style="display: flex; justify-content: space-around;">
+        <h3>Wanna buy any of these stocks 💹💸 ? </h3> <br>
+        <a href="https://groww.in/" target="_blank">
+            <button type="button">On Groww</button>
+        </a> 
+        <a href="https://upstox.com/" target="_blank">
+            <button type="button">On Upstox</button>
+        </a>   
+        <a href="https://5paisa.com/" target="_blank">
+            <button type="button">On 5paisa</button>
+        </a>   
+        <a href="https://zerodha.com/" target="_blank">
+            <button type="button">On Zerodha</button>
+        </a>
+    </div>
+''', unsafe_allow_html=True)
+        buttoncss = """
+        <style>
+        h3{
+        text-align:center ;
+        
+        }
+        button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #69DE96; # back color 
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    display : block ;
+    margin : auto ;
+    margin-top : 20px ; 
+}
+
+/* Hover effect */
+button:hover {
+    background-color: #000000; /* Darker blue color on hover */
+    color : #fff ; 
+    transform: scale(1.1);
+}        
+</style>
+""" 
+        st.markdown(buttoncss , unsafe_allow_html=True)
 
 
-# making all  these links in the form of a button but getting error printing the link not opening the webpage after clicking on them !---------
-
-#         buy_links = [
-#     {"name": "On Grow", "url": "https://groww.in/"},
-#     {"name": "On Upstox", "url": "https://upstox.com/"},
-#     {"name": "On 5Paisa", "url": "https://www.5paisa.com/"},
-#     {"name": "On Zerodha", "url": "https://zerodha.com/"}
-#     ]
-
-# # Display buttons for each link
-#         for link in buy_links:
-#             if st.button(link["name"]):
-#                 st.markdown(f'<a href="{link["url"]}" target="_blank">{link["name"]}</a>', unsafe_allow_html=True)
 
     except:
         st.error("Error Occurred! Please try again.")

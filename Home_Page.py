@@ -7,7 +7,7 @@ from PIL import Image
 def app():
 
     #Header section
-    st.title("Capital Asset Pricing Model (CAPM) 📈")
+    
     st.subheader("A method for calculating the required rate of return, discount rate or cost of capital")
     st.write("The Capital Asset Pricing Model (CAPM) is a model that describes the relationship between the expected return and risk of investing in a security.It shows that the expected return on a security is equal to the risk-free return plus a risk premium, which is based on the beta of that security.")
 

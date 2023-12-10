@@ -6,4 +6,4 @@ yfinance
 plotly
 pandas_datareader
 streamlit_lottie
-PIL
+
