@@ -31,9 +31,9 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-        #MainMenu {visibility: hidden;}
-        .st-emotion-cache-1wbqy5l.e17vllj40 {visibility : hidden;}
-        .st-emotion-cache-164nlkn.ea3mdgi1 {visibility : hidden;}
+        # #MainMenu {visibility: hidden;}
+        # .st-emotion-cache-1wbqy5l.e17vllj40 {visibility : hidden;}
+        # .st-emotion-cache-164nlkn.ea3mdgi1 {visibility : hidden;}
     </style>
     """,
     unsafe_allow_html=True
