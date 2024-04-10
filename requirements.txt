@@ -1,15 +1,13 @@
 streamlit 
 seaborn
 requests
-datetime
-random
-webbrowser
+
 bs4
 numpy 
 pandas
 yfinance
 plotly
-json
+
 pandas_datareader
 streamlit_lottie
 streamlit_option_menu
