@@ -174,28 +174,6 @@ def app():
         
 
 
-
-
-        
-
-
-        # st.markdown('''
-        # <a href="https://groww.in/" target="_blank">
-        # <button type="button">On grow</button>
-        # </a> 
-        # <a href="https://upstox.com/" target="_blank">
-        # <button type="button">On upstox</button>
-        # </a>   
-        # <a href="https://5paisa.com/" target="_blank">
-        # <button type="button">On 5paisa</button>
-        # </a>   
-        # <a href="https://Zerodha.com/" target="_blank">
-        # <button type="button">On Zerodha</button>
-        # </a>     
-
-
-        # ''' , unsafe_allow_html = True)
-
         # new -----------
         st.markdown('''
     <div style="display: flex; justify-content: space-around;">
@@ -245,10 +223,6 @@ button:hover {
         st.markdown(buttoncss , unsafe_allow_html=True)
 
 
-        load_dotenv()
-        key = os.getenv('Google_api_key')
-
-        # print(table)
 
 
 
