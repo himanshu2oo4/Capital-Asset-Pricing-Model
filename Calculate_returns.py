@@ -146,7 +146,7 @@ def app():
                     X = sm.add_constant(market_returns)
                     model = sm.OLS(stock_returns, X).fit()
                     beta = model.params['Adj Close']
-                    print(beta)
+                    
                     # Calculate expected return using CAPM
                     expected_return = risk_free_rate + beta * (market_return - risk_free_rate)
                     expected_returns.append((stock_symbol, expected_return))
@@ -175,52 +175,52 @@ def app():
 
 
         # new -----------
-        st.markdown('''
-    <div style="display: flex; justify-content: space-around;">
-        <h3>Wanna buy any of these stocks 💹💸 ? </h3> <br>
-        <a href="https://groww.in/" target="_blank">
-            <button type="button">On Groww</button>
-        </a> 
-        <a href="https://upstox.com/" target="_blank">
-            <button type="button">On Upstox</button>
-        </a>   
-        <a href="https://5paisa.com/" target="_blank">
-            <button type="button">On 5paisa</button>
-        </a>   
-        <a href="https://zerodha.com/" target="_blank">
-            <button type="button">On Zerodha</button>
-        </a>
-    </div>
-''', unsafe_allow_html=True)
-        buttoncss = """
-        <style>
-        h3{
-        text-align:center ;
+#         st.markdown('''
+#     <div style="display: flex; justify-content: space-around;">
+#         <h3>Wanna buy any of these stocks 💹💸 ? </h3> <br>
+#         <a href="https://groww.in/" target="_blank">
+#             <button type="button">On Groww</button>
+#         </a> 
+#         <a href="https://upstox.com/" target="_blank">
+#             <button type="button">On Upstox</button>
+#         </a>   
+#         <a href="https://5paisa.com/" target="_blank">
+#             <button type="button">On 5paisa</button>
+#         </a>   
+#         <a href="https://zerodha.com/" target="_blank">
+#             <button type="button">On Zerodha</button>
+#         </a>
+#     </div>
+# ''', unsafe_allow_html=True)
+#         buttoncss = """
+#         <style>
+#         h3{
+#         text-align:center ;
         
-        }
-        button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #69DE96; # back color 
-    color: #fff; /* White text color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    display : block ;
-    margin : auto ;
-    margin-top : 20px ; 
-}
+#         }
+#         button {
+#     padding: 10px 20px;
+#     font-size: 16px;
+#     background-color: #69DE96; # back color 
+#     color: #fff; /* White text color */
+#     border: none;
+#     border-radius: 5px;
+#     cursor: pointer;
+#     transition: background-color 0.3s ease-in-out;
+#     display : block ;
+#     margin : auto ;
+#     margin-top : 20px ; 
+# }
 
-/* Hover effect */
-button:hover {
-    background-color: #000000; /* Darker blue color on hover */
-    color : #fff ; 
-    transform: scale(1.1);
-}        
-</style>
-""" 
-        st.markdown(buttoncss , unsafe_allow_html=True)
+# /* Hover effect */
+# button:hover {
+#     background-color: #000000; /* Darker blue color on hover */
+#     color : #fff ; 
+#     transform: scale(1.1);
+# }        
+# </style>
+# """ 
+#         st.markdown(buttoncss , unsafe_allow_html=True)
 
 
 
