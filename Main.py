@@ -1,7 +1,7 @@
 import streamlit as st
 
 from streamlit_option_menu import option_menu
-import Home_Page, Return_analysis, Importance, Calculate_returns
+import Home_Page, Return_analysis, Importance, Calculate_returns , qachat
 
 st.set_page_config(
     page_title="CAPM Web Application", layout="wide"
@@ -108,7 +108,7 @@ class MultiApp:
         st.title("Capital Asset Pricing Model (CAPM) 📈")
         app = option_menu(
             menu_title="",
-            options=["Home Page","Importance","Return_Analysis","Calculate_Return"],
+            options=["Home Page","Importance","Return_Analysis","Calculate_Return",'qachat'],
             icons=["house-fill","book-fill","stack-overflow","building-up"],
             default_index=0,
             orientation="horizontal"
@@ -123,6 +123,9 @@ class MultiApp:
             Return_analysis.app()
         if app=="Calculate_Return":
             Calculate_returns.app()
+
+        if app == 'qachat':
+            qachat.app()
 
     run()
 

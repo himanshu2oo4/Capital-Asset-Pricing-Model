@@ -11,7 +11,8 @@ import CAPM_Functions
 import random
 import seaborn as sns 
 import webbrowser
-
+import os 
+from dotenv import load_dotenv
 def app():
     st.header("Calculate Risk  and Return")
 
@@ -244,6 +245,14 @@ button:hover {
         st.markdown(buttoncss , unsafe_allow_html=True)
 
 
+        load_dotenv()
+        key = os.getenv('Google_api_key')
+
+        # print(table)
+
+
+
+    
 
     except:
         st.error("Error Occurred! Please try again.")

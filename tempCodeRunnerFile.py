@@ -1,0 +1,1 @@
+f"Assume that you are a stock Analyst or a financial advisor, analyze the provided stocks data and answer my questions in a short summary (one line). {stock_data} my question is  {question} generate a clear and concise answer to my question based on the data analysis."
