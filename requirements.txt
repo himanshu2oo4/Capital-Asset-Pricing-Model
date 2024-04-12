@@ -11,3 +11,4 @@ python.dotenv
 pandas_datareader
 streamlit_lottie
 streamlit_option_menu
+statsmodels
