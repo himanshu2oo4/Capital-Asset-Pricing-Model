@@ -10,8 +10,10 @@ import datetime
 import pandas as pd 
 import pandas_datareader.data as web
 import yfinance as yf 
+
 import webbrowser
 def app():
+    
     st.header('CAPITAL MIND AI ')
     html = requests.get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
     soup = bs.BeautifulSoup(html.text)
@@ -80,10 +82,11 @@ def app():
 
         st.session_state['chat_history'].append(('You' , input))
         st.subheader('The response is : ')
-
-        for chunk in response:
-            st.write(chunk.text)
-        
+        response.resolve()
+        st.write(response.text)
+        # for chunk in response:
+        #     st.write(chunk.text , end= '')
+        # st.write(response.text)
         st.session_state['chat_history'].append(('Capital Mind', response.text))
     st.subheader('The chat history is : ')
     for role , text in st.session_state['chat_history']:
