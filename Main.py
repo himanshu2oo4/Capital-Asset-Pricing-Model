@@ -108,7 +108,7 @@ class MultiApp:
         st.title("Capital Asset Pricing Model (CAPM) 📈")
         app = option_menu(
             menu_title="",
-            options=["Home Page","Importance","Return_Analysis","Calculate_Return",'qachat'],
+            options=["Home Page","Importance","Return_Analysis","Calculate_Return",'AI CHAT'],
             icons=["house-fill","book-fill","stack-overflow","building-up"],
             default_index=0,
             orientation="horizontal"
