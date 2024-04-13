@@ -124,7 +124,7 @@ class MultiApp:
         if app=="Calculate_Return":
             Calculate_returns.app()
 
-        if app == 'qachat':
+        if app == 'AI CHAT':
             qachat.app()
 
     run()

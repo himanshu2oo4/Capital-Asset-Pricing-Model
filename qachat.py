@@ -23,12 +23,11 @@ def app():
     for row in rows:
         ticker = row.findAll('td')[0].text
         tickers.append(ticker[:-1])
-    col1,col2 = st.columns([1,1])
-    with col1:
-        stocks_list = st.multiselect("**Choose stocks**", (tickers),(tickers[0]))
+    
+    
+    stocks_list = st.multiselect("**Choose stocks**", (tickers),(tickers[0]))
 
-    with col2:
-        year = st.number_input("**Number of years**",1,10)
+    year = 1 
     
     try:
             end = datetime.date.today()
@@ -62,7 +61,7 @@ def app():
     chat = model.start_chat(history = [])
 
     def get_gemini_response(question):
-        prompt = f"your name is CAPITAL MIND AI , you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you the data of diff stocks do a comparative analyis of {stock_data}  generate a clear and short answer in 50 words to my question based on the analysis. my question is {question}  "
+        prompt = f"your name is CAPITAL MIND AI , you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you the data of diff stocks do a comparative analyis of {stock_data} generate a clear and short answer in 50 words to my question based on the analysis. my question is {question}"
         response = chat.send_message(prompt , stream = True)
         return response
 
