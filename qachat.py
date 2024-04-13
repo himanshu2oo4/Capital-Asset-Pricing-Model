@@ -83,7 +83,8 @@ def app():
 
         for chunk in response:
             st.write(chunk.text)
-            st.session_state['chat_history'].append(('Bot', chunk.text))
+        
+        st.session_state['chat_history'].append(('Capital Mind', response.text))
     st.subheader('The chat history is : ')
     for role , text in st.session_state['chat_history']:
         st.write(f'{role} : {text}')
