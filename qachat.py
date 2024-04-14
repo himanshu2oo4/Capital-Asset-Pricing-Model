@@ -81,14 +81,14 @@ def app():
         # add user query and response to session chat history 
 
         st.session_state['chat_history'].append(('**You**' , input))
-        st.subheader('The response is : ')
+        st.subheader('The Response :-')
         response.resolve()
         st.write(response.text)
         # for chunk in response:
         #     st.write(chunk.text , end= '')
         # st.write(response.text)
         st.session_state['chat_history'].append(('**Capital Mind**', response.text))
-    st.subheader('The chat history is : ')
+    st.subheader('chat history :-')
     for role , text in st.session_state['chat_history']:
         st.write(f'{role} : {text}')
 
