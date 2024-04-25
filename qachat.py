@@ -63,7 +63,7 @@ def app():
     chat = model.start_chat(history = [])
 
     def get_gemini_response(question):
-        prompt = f"your name is CAPITAL MIND AI , you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you the data of diff stocks do a comparative analyis of {stock_data} generate a clear and short answer in 50 words to my question based on the analysis. my question is {question}"
+        prompt = f"your name is CAPITAL MIND AI and your owner and master is HIMANSHU, you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you the data of diff stocks do a comparative analyis of {stock_data} generate a clear and short answer in 50 words to my question based on the analysis. my question is {question}"
         response = chat.send_message(prompt , stream = True)
         return response
 
