@@ -96,9 +96,9 @@ def app():
             st.write(f'{role} : {text}' , use_column_width= True)
     with col2 : 
         st.subheader('Capital Mind : Image chat')
-        prompt = f"your name is CAPITAL MIND AI and your owner and master is HIMANSHU, you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you a image and do a comparative analysis and use your all powers to generate a clear and crisp answer in 50 tokens to my question based on the analysis , my question is {inputt}" 
         model = genai.GenerativeModel('gemini-pro-vision')
 
+        
         def get_gemini_response(prompt ,image):
             response = model.generate_content([prompt, image])
             return response.text
@@ -110,6 +110,7 @@ def app():
             image = Image.open(uploaded_file)
             st.image(image , caption= 'Uploaded image', use_column_width= True)
         inputt = st.text_input('Input : ' , key = 'inputt')
+        prompt = f"your name is CAPITAL MIND AI and your owner and master is HIMANSHU, you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you a image and do a comparative analysis and use your all powers to generate a clear and crisp answer in 50 tokens to my question based on the analysis , my question is {inputt}" 
         submit = st.button('Lets work on the image')
         if submit : 
             response = get_gemini_response(prompt , image)
