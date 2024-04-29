@@ -14,7 +14,8 @@ import yfinance as yf
 import webbrowser
 def app():
     
-    st.header('CAPITAL MIND AI ')
+    # st.header('CAPITAL MIND AI ')
+    st.markdown("""<h1 style='text-align: center;'>CAPITAL MIND AI</h1>""", unsafe_allow_html=True)
     html = requests.get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
     soup = bs.BeautifulSoup(html.text)
 
