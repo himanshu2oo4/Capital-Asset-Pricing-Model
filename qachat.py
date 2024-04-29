@@ -93,7 +93,7 @@ def app():
             st.session_state['chat_history'].append(('**Capital Mind**', response.text))
         st.subheader('chat history :-')
         for role , text in st.session_state['chat_history']:
-            st.write(f'{role} : {text}')
+            st.write(f'{role} : {text}' , use_column_width= True)
     with col2 : 
         st.subheader('Capital Mind : Image chat')
         inputt = st.text_input('Input : ' , key = 'inputt')
