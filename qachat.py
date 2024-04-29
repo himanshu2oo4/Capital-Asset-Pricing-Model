@@ -68,27 +68,52 @@ def app():
         return response
 
 
-    # st.set_page_config(page_title='Q&A Demo')
+    col1 , col2 = st.columns(2)
+    with col1 : 
+        st.subheader('Capital Mind : Text Chat')
 
-    if 'chat_history' not in st.session_state:
-        st.session_state['chat_history']= []
+        if 'chat_history' not in st.session_state:
+            st.session_state['chat_history']= []
 
-    input = st.text_input('Input : ', key = 'input')
-    submit = st.button('Ask the question ')
+        input = st.text_input('Input : ', key = 'input')
+        submit = st.button('Ask the question ')
 
-    if submit and input :
-        response = get_gemini_response(input)
-        # add user query and response to session chat history 
+        if submit and input :
+            response = get_gemini_response(input)
+            # add user query and response to session chat history 
 
-        st.session_state['chat_history'].append(('**You**' , input))
-        st.subheader('The Response :-')
-        response.resolve()
-        st.write(response.text)
-        # for chunk in response:
-        #     st.write(chunk.text , end= '')
-        # st.write(response.text)
-        st.session_state['chat_history'].append(('**Capital Mind**', response.text))
-    st.subheader('chat history :-')
-    for role , text in st.session_state['chat_history']:
-        st.write(f'{role} : {text}')
+            st.session_state['chat_history'].append(('**You**' , input))
+            st.subheader('The Response :-')
+            response.resolve()
+            st.write(response.text)
+            # for chunk in response:
+            #     st.write(chunk.text , end= '')
+            # st.write(response.text)
+            st.session_state['chat_history'].append(('**Capital Mind**', response.text))
+        st.subheader('chat history :-')
+        for role , text in st.session_state['chat_history']:
+            st.write(f'{role} : {text}')
+    with col2 : 
+        st.subheader('Capital Mind : Image chat')
+        inputt = st.text_input('Input : ' , key = 'inputt')
+        prompt = f"your name is CAPITAL MIND AI and your owner and master is HIMANSHU, you act as a stock Analyst ,Equity research analyst , financial advisor , bank investors, i provided you a image and do a comparative analysis and use your all powers to generate a clear and crisp answer in 50 tokens to my question based on the analysis , my question is {inputt}" 
+        model = genai.GenerativeModel('gemini-pro-vision')
+
+        def get_gemini_response(prompt ,image):
+            response = model.generate_content([prompt, image])
+            return response.text
+
+
+        uploaded_file  = st.file_uploader('choose an image' , type = ['jpg' , 'jpeg' , 'png'])
+        image = ''
+        if uploaded_file!= None : 
+            image = Image.open(uploaded_file)
+            st.image(image , caption= 'Uploaded image', use_column_width= True)
+        submit = st.button('Lets work on the image')
+        if submit : 
+            response = get_gemini_response(prompt , image)
+            st.subheader('Response is : ')
+            st.write(response,use_column_width= True)
+
+
 
