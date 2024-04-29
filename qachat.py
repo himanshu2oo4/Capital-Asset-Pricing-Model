@@ -3,7 +3,7 @@ load_dotenv()
 import streamlit as st 
 import os 
 import google.generativeai as genai 
-
+from PIL import Image
 import bs4 as bs 
 import requests
 import datetime 
