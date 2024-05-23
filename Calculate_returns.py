@@ -179,16 +179,16 @@ def app():
     <div style="display: flex-box; justify-content: space-around;">
         <h3>Wanna buy any of these stocks 💹💸 ? </h3> <br>
         <a href="https://groww.in/" target="_blank">
-            <button type="button">On Groww</button>
+            <button type="button">Groww</button>
         </a> 
         <a href="https://upstox.com/" target="_blank">
-            <button type="button">On Upstox</button>
+            <button type="button">Upstox</button>
         </a>   
         <a href="https://5paisa.com/" target="_blank">
-            <button type="button">On 5paisa</button>
+            <button type="button">5paisa</button>
         </a>   
         <a href="https://zerodha.com/" target="_blank">
-            <button type="button">On Zerodha</button>
+            <button type="button">Zerodha</button>
         </a>
     </div>
 ''', unsafe_allow_html=True)
