@@ -178,7 +178,7 @@ def app():
         st.markdown('''
         <center>
     <div style="display: inline-block;  justify-content: space-around;">
-        <h3>Wanna buy any of these stocks 💹💸 ? You can visit any of these sites!!</h3>
+        <h3>Wanna buy any of these stocks 💹💸 ? You can visit any of your choice!</h3>
         <a href="https://groww.in/" target="_blank">
             <button type="button"><strong><big>Groww</strong></big></button>
         </a> 
