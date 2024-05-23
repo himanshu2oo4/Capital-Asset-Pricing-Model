@@ -176,20 +176,20 @@ def app():
 
         # new -----------
         st.markdown('''
+        <center>
     <div style="display: inline-block; justify-content: space-around;">
         <h3>Wanna buy any of these stocks 💹💸 ? You can visit any of these sites!!</h3>
-        <center>
         <a href="https://groww.in/" target="_blank">
-            <button type="button">Groww</button>
+            <button type="button"><strong><big>Groww</strong></big></button>
         </a> 
         <a href="https://upstox.com/" target="_blank">
-            <button type="button">Upstox</button>
+            <button type="button"><strong><big>Upstox</strong></big></button>
         </a>   
         <a href="https://5paisa.com/" target="_blank">
-            <button type="button">5paisa</button>
+            <button type="button"><strong><big>5paisa</strong></big></button>
         </a>   
         <a href="https://zerodha.com/" target="_blank">
-            <button type="button">Zerodha</button>
+            <button type="button"><strong><big>Zerodha</strong></big></button>
         </a>
         </center>
     </div>
