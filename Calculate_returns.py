@@ -205,7 +205,6 @@ def app():
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
-        display : block ;
         margin : auto ;
         margin-top : 20px ; }
 
